@@ -6,7 +6,7 @@
 </head>
 <body>
   <script>
-    // declare variables as array
+    // declare variables and  array
       const myArray = [
           'Rock',
           'Paper',
@@ -14,6 +14,8 @@
       ];
       let computerSelection;
       let playerSelection;
+      let computerScore;
+      let playerScore;
       
     // getComputerChoice to get input from keyboard
       function getComputerChoice() {
@@ -21,13 +23,38 @@
           if ((playerSelection.toLowerCase()=='rock')
               ||(playerSelection.toLowerCase()=='paper')
               ||(playerSelection.toLowerCase()=='scissors')) {
-            alert(playerSelection);
+            console.log(playRound(playerSelection, computerSelection));
           } else {
-          alert('That\'s not a valid choice.');
+          alert('Invalid choice, Please select one of the options.');
           getComputerChoice();
         }
       }     
       getComputerChoice()
+      // play round 
+      function playRound(playerSelection, computerSelection) {
+          alert(computerPlay);
+          computerSelection = computerPlay().toLowerCase();
+          playerSelection = playerSelection.toLowerCase();
+          if (computerSelection==playerSelection) {
+              alert('Tie game!');
+              return 'Tie game\nComputer Score: ' + 
+                      computerScore + '\nYour Score: ' + playerScore;
+          } else if ((computerSelection=='rock' && playerSelection=='scissors') 
+                    || (computerSelection=='scissors' && playerSelection=='paper') 
+                    || (computerSelection=='paper' && playerSelection=='rock')) {
+              alert('You lose! ' + computerSelection + ' beats ' + playerSelection);
+              return 'Computer Score: ' + ++computerScore + 
+                      '\nYour Score: ' + playerScore;
+          } else {
+              alert('You win! ' + playerSelection + ' beats ' + computerSelection);
+              return 'Your Score: ' + ++playerScore + 
+                      '\nComputer Score: ' + computerScore;
+          }
+      }
+      function computerPlay() {
+        return myArray[~~(Math.random()*myArray.length)]
+      }
+
   </script>
 </body>
 </html>
