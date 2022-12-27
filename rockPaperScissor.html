@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Rock Paper Scissors</title>
-  <meta charset="UTF-8"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
   <script>
     // declare variables and  array
-      const myArray = [
+      const rockPaperScissors = [
           'Rock',
           'Paper',
           'Scissors'
@@ -16,6 +18,17 @@
       let playerSelection;
       let computerScore;
       let playerScore;
+      let numberPlayRound;
+
+      gameStarter();
+      function gameStarter () {
+        computerScore=0;
+        playerScore=0;
+        numberPlayRound=parseInt(prompt('Please enter the number of play round.'));
+        for (let i=0; i<numberPlayRound; i++) {
+            getComputerChoice()();
+        }
+       }
       
     // getComputerChoice to get input from keyboard
       function getComputerChoice() {
@@ -28,11 +41,9 @@
           alert('Invalid choice, Please select one of the options.');
           getComputerChoice();
         }
-      }     
-      getComputerChoice()
+      }   
       // play round 
       function playRound(playerSelection, computerSelection) {
-          alert(computerPlay);
           computerSelection = computerPlay().toLowerCase();
           playerSelection = playerSelection.toLowerCase();
           if (computerSelection==playerSelection) {
@@ -52,7 +63,7 @@
           }
       }
       function computerPlay() {
-        return myArray[~~(Math.random()*myArray.length)]
+        return rockPaperScissors[~~(Math.random()*rockPaperScissors.length)]
       }
 
   </script>
