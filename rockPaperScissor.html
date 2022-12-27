@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    // declare variables as array
+      const myArray = [
+          'Rock',
+          'Paper',
+          'Scissors'
+      ];
+      let computerSelection;
+      let playerSelection;
+      
+    // getComputerChoice to get input from keyboard
+      function getComputerChoice() {
+        playerSelection = prompt('Rock, Paper, or Scissors?', '');
+          if ((playerSelection.toLowerCase()=='rock')
+              ||(playerSelection.toLowerCase()=='paper')
+              ||(playerSelection.toLowerCase()=='scissors')) {
+            alert(playerSelection);
+          } else {
+          alert('That\'s not a valid choice.');
+          getComputerChoice();
+        }
+      }     
+      getComputerChoice()
+  </script>
+</body>
+</html>
