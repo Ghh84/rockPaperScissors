@@ -26,9 +26,10 @@
         playerScore=0;
         numberPlayRound=parseInt(prompt('Please enter the number of play round.'));
         for (let i=0; i<numberPlayRound; i++) {
-            getComputerChoice()();
+            getComputerChoice();
         }
        }
+       console.log(formateOutput())
       
     // getComputerChoice to get input from keyboard
       function getComputerChoice() {
@@ -37,11 +38,12 @@
               ||(playerSelection.toLowerCase()=='paper')
               ||(playerSelection.toLowerCase()=='scissors')) {
             console.log(playRound(playerSelection, computerSelection));
-          } else {
-          alert('Invalid choice, Please select one of the options.');
-          getComputerChoice();
-        }
-      }   
+          } 
+          else {
+            alert('Invalid choice, Please select one of the options.');
+            getComputerChoice();
+          }
+     }   
       // play round 
       function playRound(playerSelection, computerSelection) {
           computerSelection = computerPlay().toLowerCase();
@@ -66,6 +68,20 @@
         return rockPaperScissors[~~(Math.random()*rockPaperScissors.length)]
       }
 
+      function formateOutput() {
+          let formattedOutput;
+          if (playerScore===computerScore) {
+            alert(playerScore + '-' + computerScore + '\nTie game!');
+            formattedOutput= playerScore + '-' + computerScore + '\nTie game!';
+          } else if (playerScore>computerScore) {
+            alert(playerScore + '-' + computerScore + '\nYou win!!');
+            formattedOutput= playerScore + '-' + computerScore + '\nYou win!!';
+          } else {
+            alert(playerScore + '-' + computerScore + '\nYou lost. Better luck next time!');
+            formateOutput= playerScore + '-' + computerScore + '\nYou lost. Better luck next time!';
+          }
+          return formateOutput;
+        }
   </script>
 </body>
 </html>
