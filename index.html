@@ -10,27 +10,45 @@
     />
   </head>
   <body>
-    <script src="app.js"></script>
     <main id="main-content">
-      <h1 id="title">Man vs Computer</h1>
+      <h1 id="title">You vs Computer</h1>
       <p class="desc animate" id="desc1">
-        Machines are threatening to take over the world...
+        Rock paper scissors is a hand game originating in China, usually played between two people, in which each player simultaneously forms one of three shapes with an outstretched hand.
       </p>
       <p class="desc disappear" id="desc2">
-        Unless you can defeat them in a game of rock paper scissors first to
-        5...
+        The rock is a closed fist; paper is a flat hand with fingers and thumb extended and the palm facing downward; and scissors is a fist with the index and middle fingers fully extended toward the opposing player. Rock wins against scissors; paper wins against rock; and scissors wins against paper.
       </p>
       <p class="desc disappear" id="desc3">
-        Do you have what it takes to save mankind?
+        How to challenge to the game?
       </p>
-      <p id="cta">Choose your weapon!</p>
+      <p id="cta">Select Rock, Paper or Scissors button!</p>
+      <div id="game-container">
+        <div id="btn-container">
+          <div id="rock" class="button">
+            <button id="button-rps">Rock</button>
+          </div>
+          <div id="paper" class="button">
+            <button id="button-rps">Paper</button>>
+          </div>
+          <div id="scissors" class="button">
+            <button id="button-rps">Scissors</button>
+          </div>
+        </div>
+        <div id="score-label">
+          <p class="label">you</p>
+          <p class="label">computer</p>
+        </div>
+        <div id="score-container">
+          <div id="player-score" class="score">0</div>
+          <div id="computer-score" class="score">0</div>
+        </div>
+        <div id="results-container"></div>
+      </div>
     </main>
     <div id="end-alert" class="disappear">
       <div id="end-desc"></div>
       <a id="retry-btn"></a>
     </div>
-    <footer>
-        
-    </footer>
+    <script src="app.js"></script>
   </body>
 </html>
