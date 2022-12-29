@@ -23,7 +23,7 @@ function skipAnime() {
 }
 
 function startGame() {
-  fadeIn();
+  getAnimate();
   //need to turn nodelist of spans into an array so we can access last value for ontransitionend
   const desc1 = document.querySelector("#desc1");
   let desc1Span = desc1.querySelectorAll("span");
@@ -41,8 +41,8 @@ function startGame() {
       desc1.classList.remove("animate");
       desc2.classList.remove("disappear");
       desc2.classList.add("animate");
-      fadeIn();
-      
+      getAnimate();
+
       let desc2Span = desc2.querySelectorAll("span");
       desc2Span = Array.from(desc2Span);
 
@@ -53,7 +53,7 @@ function startGame() {
           desc2.classList.remove("animate");
           desc3.classList.remove("disappear");
           desc3.classList.add("animate");
-          fadeIn();
+          getAnimate();
 
           let desc3Span = desc3.querySelectorAll("span");
           desc3Span = Array.from(desc3Span);
@@ -76,7 +76,7 @@ function startGame() {
     });
   };
 }
-function fadeIn() {
+function getAnimate() {
   let text = document.querySelector(".animate");
 
   let strText = text.textContent;
@@ -195,94 +195,3 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-function displayResults(str) {
-  container.animate([{ opacity: 0 }, { opacity: 1 }], {
-    duration: 300,
-    fill: "forwards",
-    iterations: 1,
-    delay: 0,
-    easing: "ease-out",
-  });
-  container.textContent = str;
-}
-
-function declareWinner() {
-  rplContent();
-  if (playerScore > computerScore) {
-    endDesc.textContent = "You win! Mankind lives another day!!";
-    returnMainBtn.innerText = "Play Again";
-  } else {
-    endDesc.textContent = "You lost...who will save mankind now?";
-    returnMainBtn.innerText = "Try Again?";
-  }
-  fadeIn();
-
-  let endDescSpan = endDesc.querySelectorAll("span");
-  endDescSpan = Array.from(endDescSpan);
-
-  endDescSpan[endDescSpan.length - 1].ontransitionend = () => {
-    returnMainBtn.classList.add("fade-in");
-    /*returnMainBtn.animate([{ opacity: 0 }, { opacity: 1 }], {
-      duration: 00,
-      fill: "forwards",
-      iterations: 1,
-      delay: 0,
-      easing: "ease-in",
-    });*/
-  };
-}
-
-function rplContent() {
-  main.classList.add("disappear");
-  endAlrt.classList.remove("disappear");
-  desc.classList.remove("animate");
-  endDesc.classList.add("animate");
-
-  returnMainBtn.addEventListener("click", () => {
-    main.classList.remove("disappear");
-    endAlrt.classList.add("disappear");
-    desc.classList.add("animate");
-    returnMainBtn.classList.remove("fade-in");
-    resetGame();
-  });
-}
-
-function resetGame() {
-  fadeIn();
-  container.textContent = "";
-  playerScore = 0;
-  computerScore = 0;
-  keepPlayerScore();
-  keepCpuScore();
-}
-
-function keepPlayerScore() {
-  let playerScoreBox = document.querySelector("#player-score");
-
-  playerScoreBox.animate([{ opacity: 0 }, { opacity: 1 }], {
-    duration: 300,
-    fill: "forwards",
-    iterations: 1,
-    delay: 0,
-    easing: "ease-out",
-  });
-
-  playerScoreBox.textContent = playerScore;
-}
-function keepCpuScore() {
-  let computerScoreBox = document.querySelector("#computer-score");
-
-  computerScoreBox.animate([{ opacity: 0 }, { opacity: 1 }], {
-    duration: 300,
-    fill: "forwards",
-    iterations: 1,
-    delay: 0,
-    easing: "ease-out",
-  });
-
-  computerScoreBox.textContent = computerScore;
-}
