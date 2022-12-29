@@ -195,3 +195,87 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function displayResults(str) {
+  container.animate([{ opacity: 0 }, { opacity: 1 }], {
+    duration: 300,
+    fill: "forwards",
+    iterations: 1,
+    delay: 0,
+    easing: "ease-out",
+  });
+  container.textContent = str;
+}
+
+function declareWinner() {
+  rplContent();
+  if (playerScore > computerScore) {
+    endDesc.textContent = "You win! Mankind lives another day!!";
+    returnMainBtn.innerText = "Play Again";
+  } else {
+    endDesc.textContent = "You lost...who will save mankind now?";
+    returnMainBtn.innerText = "Try Again?";
+  }
+  getAnimate();
+
+  let endDescSpan = endDesc.querySelectorAll("span");
+  endDescSpan = Array.from(endDescSpan);
+
+  endDescSpan[endDescSpan.length - 1].ontransitionend = () => {
+    returnMainBtn.classList.add("fade-in");
+  };
+}
+
+function rplContent() {
+  main.classList.add("disappear");
+  endAlrt.classList.remove("disappear");
+  desc.classList.remove("animate");
+  endDesc.classList.add("animate");
+
+  returnMainBtn.addEventListener("click", () => {
+    main.classList.remove("disappear");
+    endAlrt.classList.add("disappear");
+    desc.classList.add("animate");
+    returnMainBtn.classList.remove("fade-in");
+    resetGame();
+  });
+}
+
+function resetGame() {
+  getAnimate();
+  container.textContent = "";
+  playerScore = 0;
+  computerScore = 0;
+  keepPlayerScore();
+  keepCpuScore();
+}
+
+function keepPlayerScore() {
+  let playerScoreBox = document.querySelector("#player-score");
+
+  playerScoreBox.animate([{ opacity: 0 }, { opacity: 1 }], {
+    duration: 300,
+    fill: "forwards",
+    iterations: 1,
+    delay: 0,
+    easing: "ease-out",
+  });
+
+  playerScoreBox.textContent = playerScore;
+}
+function keepCpuScore() {
+  let computerScoreBox = document.querySelector("#computer-score");
+
+  computerScoreBox.animate([{ opacity: 0 }, { opacity: 1 }], {
+    duration: 300,
+    fill: "forwards",
+    iterations: 1,
+    delay: 0,
+    easing: "ease-out",
+  });
+
+  computerScoreBox.textContent = computerScore;
+}
