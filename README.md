@@ -1,6 +1,6 @@
 # rockPaperScissors
 
-live: 
+live: https://ghh84.github.io/rockPaperScissors/
 
 The technology used in this project is:
  1. HTML
